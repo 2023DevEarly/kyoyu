@@ -1,0 +1,36 @@
+テーブルの構造 `NGワード`
+--
+
+CREATE TABLE IF NOT EXISTS `NGワード` (
+  `NG判定` varchar(300) NOT NULL,
+  `コメント` varchar(300) NOT NULL,
+  KEY `コメント` (`コメント`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+テーブルの構造 `スレッド`
+--
+
+CREATE TABLE IF NOT EXISTS `スレッド` (
+  `ユーザーID` int(11) NOT NULL,
+  `ハンドルネーム` varchar(50) NOT NULL,
+  `スレッドID` int(11) NOT NULL,
+  `作成日付` date NOT NULL,
+  `タイトル` varchar(50) NOT NULL,
+  `コメント` varchar(300) NOT NULL,
+  `いいね` int(11) NOT NULL,
+  KEY `ユーザーID` (`ユーザーID`,`ハンドルネーム`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+テーブルの構造 `ユーザー`
+--
+
+CREATE TABLE IF NOT EXISTS `ユーザー` (
+  `ユーザーID` int(11) NOT NULL,
+  `ハンドルネーム` varchar(50) NOT NULL,
+  `メールアドレス` varchar(50) NOT NULL,
+  `パスワード` varchar(50) NOT NULL,
+  PRIMARY KEY (`ユーザーID`,`ハンドルネーム`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
