@@ -1,0 +1,16 @@
+form {
+    text-align: center;
+    max-width: 100%;
+    height: auto;
+}
+.loguinkanryou_form_top{
+    position: absolute;
+    width: 106px;
+    height: 34px;
+    border-radius: 5px;
+}
+.loguinkanryou_rogo {
+    margin: 250px auto;
+    width: 400;
+}
+
