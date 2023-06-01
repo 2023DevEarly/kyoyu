@@ -1,0 +1,65 @@
+.login_form {
+  text-align: center;
+  max-width: auto;
+  height: auto;
+}
+
+.login_rogo_top {
+  text-align: center;
+  width: auto;
+  background-color:#5cb8ff;
+}
+
+.login_rogo_ {
+  text-align: left;
+  background-color: #fdb101;
+  color:#000000;
+  background-size: auto;
+}
+
+
+  .login_form_btm {
+    padding: 40px 0;
+    background-color: #fdfeff;
+    margin: 40px 0;
+    text-align: center;
+  }
+
+  .login_sin_{
+    text-align: left;
+  background-color: #98fd01;
+  color:#000000;
+  background-size: auto;
+  }
+  
+  input {
+    width: 400px;
+    padding: 10px;
+    margin: 20px 0;
+    text-align: center;
+  max-width: 100%;
+  height: auto;
+  }
+  button {
+   width: 10em;
+   height:3em;
+   display: block;
+   margin: auto;
+   text-align: center;
+  max-width: 100%;
+  height: auto;
+     }
+   .btn1 {
+     width: 10em;
+      height:3em;
+       display: block;
+       text-align: center;
+  max-width: 100%;
+  height: auto;
+     }
+   .btn2 {
+       display: block;
+       text-align: center;
+  max-width: 100%;
+  height: auto;
+     }
