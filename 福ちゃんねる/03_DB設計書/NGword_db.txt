@@ -1,0 +1,30 @@
+CREATE TABLE IF NOT EXISTS `NGワード` (
+  `ng_decision` varchar(100) NOT NULL,
+  `1` int(100) ,
+  `2` int(100) ,
+  `3` int(100) ,
+  KEY `ng_decision` (`ng_decision`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE IF NOT EXISTS `スレッド` (
+  `user_id` int(11) NOT NULL,
+  `handle_name` varchar(50) NOT NULL,
+  `thread_id` int(11) NOT NULL,
+  `create_day` date NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `comment` varchar(300) NOT NULL,
+  `good` int(11) NOT NULL,
+  `ng_decision` varchar(100) NOT NULL,
+  KEY `user_id` (`user_id`,`handle_name`,`ng_decision`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
+CREATE TABLE IF NOT EXISTS `ユーザー` (
+  `user_id` int(11) NOT NULL,
+  `handle_name` varchar(50) NOT NULL,
+  `user_mail` varchar(50) NOT NULL,
+  `user_pass` varchar(50) NOT NULL,
+  PRIMARY KEY (`user_id`,`handle_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
