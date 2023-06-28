@@ -52,6 +52,25 @@
         <br>
         <button type="button" class="btn btn-outline-dark" type="button" onclick="location.href='createkanryou.php'">作成</button>
     </form>
+<?php
+session_start();
+$pdo = new PDO('mysql:host=localhost;dbname=chanel;charset=utf8','root','');
+$sql = "INSERT INTO スレッド(handle_name, create_day, title, comment) VALUES (?, ?, ?, ?)";
+$ps = $pdo->prepare($sql);
+$ps->bindValue(1,$_POST['handlename'],PDO::PARAM_STR);
+$ps->bindValue(2,$_POST['Y-m-d'],PDO::PARAM_STR);
+$ps->bindValue(3,$_POST['title'],PDO::PARAM_STR);
+$ps->bindValue(4,$_POST['comment'],PDO::PARAM_STR);
+$ps->execute();
+//メールアドレスで検索を行い、user_idを取得するSELECTする
+
+$sql4 = "SELECT MAX(thread_id) FROM スレッド";
+$ps4 = $pdo->prepare($sql4);
+$ps4->execute();
+$newuserid = $ps4->fetchColumn();
+
+?>
+
 </div>
 <br>
 <a href='http://localhost/chanel/top.php'>◁</a>
