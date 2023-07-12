@@ -1,32 +1,3 @@
-<?php
-// チャットメッセージを保存するためのファイル
-$chatFile = "chat_log.txt";
-
-// メッセージの送信者と内容を取得
-if (isset($_POST['sender']) && isset($_POST['message'])) {
-    $sender = $_POST['sender'];
-    $message = $_POST['message'];
-
-    // メッセージをファイルに追記
-    $log = "[" . date('Y-m-d H:i:s') . "] " . $sender . ": " . $message . "\n";
-    file_put_contents($chatFile, $log, FILE_APPEND | LOCK_EX);
-}
-
-// チャットログを取得して表示
-if (file_exists($chatFile)) {
-    $chatLog = file_get_contents($chatFile);
-    echo nl2br($chatLog); // 改行を<br>タグに変換して表示
-
-    if (isset($_POST['comment_id']) && isset($_POST['delete_comment'])) {
-        $commentId = $_POST['comment_id'];
-        // コメントの削除処理を実行する（ここでは削除のみを想定）
-        // ...
-    
-        echo "コメントは削除されました";
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +8,6 @@ if (file_exists($chatFile)) {
         <link href="css/thread.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    
 <div class=back>  
 <div style="text-align:left;"> 
     <?php
@@ -45,24 +15,35 @@ if (file_exists($chatFile)) {
             echo date("Y/m/d");
         ?>
         <br>
-        <div style="text-align:right;">
-        <a href="http://localhost/chanel/loguin.php">ログイン</a>
+        </div>
         <div style="text-align:center;">
+        <div id="headerdiv">
             <img src="img/logo.png">
-            </div>
-            </div>
+        </div>
     </div>
 </div>
     <h1></h1>
 
     <div id="chatbox">
         <!-- チャットログが表示される領域 -->
-        <?php
-        $pdo = new PDO('mysql:host=localhost;dbname=chanel;charset=utf8','root','');
-        ?>
-    </div>
-    <div style="text-align:bottom;"> 
-    <a href='http://localhost/chanel/top.php'>◁</a>
-</div>
+    <?php   
+       $pdo = new PDO('mysql:host=localhost;dbname=chanel;charset=utf8','root','');
+       $sql="SELECT thread_id,title,comment FROM スレッド INNER JOIN メッセージ ON スレッド.thread_id = message.thread_id WHERE スレッド.thread_id= ?";
+       $ps=$pdo->prepare($sql);
+       $ps->bindValue(1,$_POST['thread'], PDO::PARAM_INT);
+       $ps->execute();
+       foreach($ps->fetchAll() as $row){
+       $title = $row['title'];
+       $comment = $row['comment'];
+       }
+?>
+
+    <form method="post" action="ログイン後スレッドngworderror.php">
+        <label for="input">入力:</label>
+        <input type="text" id="input" name="input" required>
+        <br>
+        <input type="submit" value="送信">
+    </form>
+    <button type="button" class="btn btn-outline-dark" onclick="history.back(-1)">◁</button>
 </body>
 </html>
