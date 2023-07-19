@@ -1,0 +1,48 @@
+.back1{
+    background-color: #5CB8FF;
+}
+
+.search{
+    background-color: #B1FF32;
+    display: flex;
+    justify-content:center;
+}
+
+.search1{
+    margin:5px;
+}
+
+a{
+    padding-left: 290px;
+}
+
+nav{
+    margin-left: auto;
+}
+
+ul{
+    padding: 0px;
+}
+
+.content{
+    display: flex;
+    padding: 10px;
+}
+
+.home{
+    width: 25%;
+    margin-left: 0px;
+    height: 600px;
+    border: 1px solid;
+    border-bottom: transparent;
+    border-top: transparent;
+    border-left: transparent;
+}
+
+.main{
+    margin-left:10px;
+}
+
+.sure{
+    border: 1px solid;
+}
